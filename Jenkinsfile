@@ -13,6 +13,7 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
+                    npm install --package-lock-only
                     npm ci
                     npm run build
                     ls -la
