@@ -38,22 +38,24 @@ pipeline {
                 '''
                  echo 'a'
             }
-        } stage('E2E'){
-        agent{
-            image 'node:mcr.microsoft.com/playwright:v1.47.2-noble'
-            
-        }
+        } 
+        stage('E2E'){
+            agent{
+                    docker{
+                    image 'node:mcr.microsoft.com/playwright:v1.47.2-noble'
+                    }
+                }
 
 
-        steps{
-            sh'''
-                npm run build
-                npm install -g serve 
-                serve -s build
-                npx playwrite test
-            '''
-        }
-    }
+            steps{
+                sh'''
+                    npm run build
+                    npm install -g serve 
+                    serve -s build
+                    npx playwrite test
+                '''
+            }
+         }
     
     }
 
