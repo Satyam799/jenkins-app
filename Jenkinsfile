@@ -17,7 +17,6 @@ pipeline {
                     npm ci
                     npm run build
                     ls -la
-                    ls -la
                     '''
             }
         }
@@ -49,9 +48,8 @@ pipeline {
 
             steps{
                 sh'''
-                    npm run build
-                    npm install -g serve 
-                    serve -s build
+                    npm install serve 
+                    node_modules\.bin\serve -s build
                     npx playwrite test
                 '''
             }
