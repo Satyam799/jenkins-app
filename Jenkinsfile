@@ -41,7 +41,7 @@ pipeline {
         stage('Deploy'){
             agent{
                 docker{
-                    image 'node:19-apline'
+                    image 'node:19-alpine'
                 }
             }
             steps{
