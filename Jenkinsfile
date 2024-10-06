@@ -38,7 +38,21 @@ pipeline {
                  echo 'a'
             }
         } 
-        stage('E2E'){
+        stage('Deploy'){
+            agent{
+                docker{
+                    image 'node:19-apline'
+                }
+            }
+            steps{
+                sh '''
+                    npm install netlify-cli -g
+                    netlify --version
+                '''
+            }
+        }
+
+        /*stage('E2E'){
             agent{
                     docker{
                     image 'mcr.microsoft.com/playwright:v1.47.2-noble'
@@ -54,7 +68,8 @@ pipeline {
                     npx playwright test
                 '''
             }
-         }
+         }*/
+
     
     }
 
