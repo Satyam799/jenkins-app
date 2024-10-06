@@ -38,9 +38,7 @@ pipeline {
                 '''
                  echo 'a'
             }
-        } 
-    }
-    stage('E2E'){
+        } stage('E2E'){
         agent{
             image 'node:mcr.microsoft.com/playwright:v1.47.2-noble'
             
@@ -55,6 +53,8 @@ pipeline {
                 npx playwrite test
             '''
         }
+    }
+    
     }
 
 
