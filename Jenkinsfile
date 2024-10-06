@@ -40,6 +40,24 @@ pipeline {
             }
         } 
     }
+    stage('E2E'){
+        agent{
+            image 'node:mcr.microsoft.com/playwright:v1.47.2-noble'
+            
+        }
+
+
+        steps{
+            sh'''
+                npm run build
+                npm install -g serve 
+                serve -s build
+                npx playwrite test
+            '''
+        }
+    }
+
+
    /* post {
         always {
                 junit 'test-results/junit.xml'
