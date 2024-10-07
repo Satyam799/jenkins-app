@@ -63,12 +63,9 @@ pipeline {
         }
         stage('Approval'){
             steps{
-                steps {
                     timeout(time: 40, unit: 'SECONDS') {
                       input message: 'Hi Please verify every thing and approve', ok: 'please select yes!!'
-                        
                     }
-                }
             }
         }
        
